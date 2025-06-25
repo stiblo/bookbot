@@ -1,3 +1,5 @@
+from stats import count_book_words
+
 def main():
     book_text_string = get_book_text("books/frankenstein.txt")
     book_word_count = count_book_words(book_text_string)
@@ -10,13 +12,6 @@ def get_book_text(book_file_path):
             return book_contents
     except FileNotFoundError:
         return "ERROR: File not found"
-    except Exception as e:
-        return f"ERROR: {e}"
-    
-def count_book_words(book_content):
-    try:
-        list_of_words = book_content.split()
-        return len(list_of_words)
     except Exception as e:
         return f"ERROR: {e}"
     
