@@ -16,7 +16,19 @@ def count_book_chars(book_content):
                     count_result[lower_letter] = 1
                 elif lower_letter in count_result:
                     count_result[lower_letter] += 1
-        print(count_result)
+        return count_result
     except Exception as e:
         return f"ERROR: {e}"
-        
+
+def sort_on(items):
+    return items["nums"]
+
+def sorted_char_count(book_chars_dict):
+    sorted_list = []
+    try:
+        for book_char in book_chars_dict:
+            sorted_list.append({"char": book_char, "nums": book_chars_dict[book_char]})
+        sorted_list.sort(reverse=True, key=sort_on)
+        return sorted_list      
+    except Exception as e:
+        return f"ERROR: {e}"
