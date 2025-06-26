@@ -1,7 +1,11 @@
+import sys
 from stats import count_book_words, count_book_chars, sorted_char_count
 
 def main():
-    book_text_string = get_book_text("books/frankenstein.txt")
+    if len(sys.argv) < 2:
+         print(f"Usage: python3 main.py <path_to_book>")
+         sys.exit(1)
+    book_text_string = get_book_text(sys.argv[1])
     sorted_chars_list = sorted_char_count(count_book_chars(book_text_string))
     print("============ BOOKBOT ============")
     print("Analyzing book found at books/frankenstein.txt...")
@@ -10,7 +14,7 @@ def main():
     print("--------- Character Count -------")
     for sorted_char in sorted_chars_list:
         if sorted_char['char'].isalpha():
-            print(f"{sorted_char['char']}: {sorted_char['nums']}")
+                print(f"{sorted_char['char']}: {sorted_char['nums']}")
     print("============= END ===============")
 
 def get_book_text(book_file_path):
